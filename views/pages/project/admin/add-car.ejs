@@ -1,0 +1,98 @@
+<%- include('../partials/header.ejs') %>
+<link rel="stylesheet" type="text/css" href="/stylesheets/forms.css" />
+</head>
+<body>
+   <%- include('../partials/nav.ejs') %>
+
+   <h1>Add Car Page</h1>
+   <form action="/add-car" method="POST">
+      <div class="form row">
+         <div class="col-md-3 mb-2">
+            <label for="name">Car Name</label>
+            <input
+               class="<%= validationErrors.find(e => e.param === 'name') ? 'form-control is-invalid' : 'form-control' %>"
+               type="text"
+               name="name" 
+               id="name" 
+               value="<%= oldInput.name %>"
+               required>
+         </div>
+         <div class="col-md-3 mb-2">
+            <label for="startDate">Production Start Date</label>
+            <input
+               class="<%= validationErrors.find(e => e.param === 'startDate') ? 'form-control is-invalid' : 'form-control' %>"
+               type="text"
+               name="startDate"
+               id="startDate"
+               value="<%= oldInput.startDate %>"
+               required>
+         </div>
+         <div class="col-md-3 mb-2">
+            <label for="endDate">Production End Date</label>
+            <input
+               class="<%= validationErrors.find(e => e.param === 'endDate') ? 'form-control is-invalid' : 'form-control' %>"
+               type="text"
+               name="endDate" 
+               id="endDate" 
+               value="<%= oldInput.endDate %>"
+               required>
+         </div>
+      </div>
+      <div class="form row">
+         <div class="col-md-2 mb-1">
+            <label for="number">Number</label>
+            <input
+               class="<%= validationErrors.find(e => e.param === 'number') ? 'form-control is-invalid' : 'form-control' %>"
+               type="text"
+               name="number"
+               id="number"
+               value="<%= oldInput.number %>"
+               required>
+         </div>
+         <div class="col-md-2 mb-1">
+            <label for="price">Price</label>
+            <input
+               class="<%= validationErrors.find(e => e.param === 'price') ? 'form-control is-invalid' : 'form-control' %>"
+               type="float"
+               name="price"
+               id="price"
+               value="<%= oldInput.price %>"
+               required>
+         </div>
+      </div>
+      <div class="form row">
+         <div class="col-md-6 mb-7">
+            <label for="imgUrl">Image URL</label>
+            <input
+               class="<%= validationErrors.find(e => e.param === 'imgUrl') ? 'form-control is-invalid' : 'form-control' %>"
+               type="text"
+               name="imgUrl"
+               id="imgUrl"
+               value="<%= oldInput.imgUrl %>"
+               required>
+         </div>
+      </div>
+      <div class="form row">
+         <div class="col-md-6 mb-7">
+            <label for="descripton">Description</label>
+            <textarea
+            class="<%= validationErrors.find(e => e.param === 'description') ? 'form-control is-invalid' : 'form-control' %>"
+               name="description"
+               rows="5"
+               name="description"
+               id="descripton"
+               value="<%= oldInput.description %>"
+                required>
+            </textarea>
+         </div>
+      </div>
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+      <button type="submit" class="btn btn-sm btn-outline-secondary">Add Car</button>
+      <% if (errorMessage) { %>
+         <div class="alert alert-warning alert-dismissible fade show" role="alert"> 
+            <strong>Holy guacamole!</strong> <p><span style="color: red;"><%= errorMessage %></span></p>
+          </div>
+     <% } %>
+   </form>
+
+   <%- include('../partials/footer.ejs') %>

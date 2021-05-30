@@ -1,0 +1,41 @@
+1. Copy and paste the URL for your source code repository (e.g., GitHub):
+
+	https://github.com/jo3l17/CSE341
+
+2. Briefly list and describe the elements of the application that are functioning. 
+
+	the http object is ccreating the node server in port 3000,
+	the prove01-routes.js file is handling the three routes
+	and returning the request handler, I'm using the file system
+	object to read a json file with an array of users, and adding
+	the new username handling the data sended by the form.
+
+3. Briefly describe any pieces of the assignment that are not yet working correctly.
+
+	All is working correctly.There could be errors if there is no users.json file.
+
+4. Briefly describe the "coolest" thing you learned while completing this assignment.
+
+	I have learned how to save data locally, usually I use localstorage,
+	but nodejs don't have localstorage without a third-party module, so
+	I decided to read and write a json file.
+
+5. If you could change this assignment to be more effective or helpful, what would you change?
+
+	I would handle the error, that if there is no users.json file, I would create one
+
+6. Please select the category you feel best describes your assignment:
+   1 - Some attempt was made
+   2 - Developing, but significantly deficient
+   3 - Slightly deficient, but still mostly adequate
+   4 - Meets requirements
+   5 - Shows creativity and excels above and beyond requirements
+
+	5
+
+7. Provide a brief justification (1-2 sentences) for selecting that category.
+
+	I have used file system before, but I never thought that I could use it
+	on this way, I decided to use 2 asynchronous functions, to get the data,
+	even when this could have a delay to the user if it's a larger file, but
+	I know that this method is better than use synchronous functions.

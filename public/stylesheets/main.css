@@ -1,0 +1,162 @@
+/* .jumbotron {
+  
+  color: white;
+  
+} */
+
+body{
+  margin: 2.5rem;
+}
+
+.jumbotron {
+  padding-top: 80px; 
+  margin-bottom: 2rem;
+  background: #0065BD;
+  border-radius: .3rem;
+  color: white;
+  padding-bottom: 80px; 
+}
+
+.jumbotron .btn-primary {
+  background: #845ac7;
+  border-color: #845ac7; 
+}
+
+.jumbotron .btn-primary:hover {
+  background: #7646c1; 
+}
+  
+.jumbotron p {
+  color: #d9ccee;
+  max-width: 75%;
+  margin: 1em auto 2em; 
+}
+  
+.navbar + .jumbotron {
+  margin-top: -20px; 
+}
+  
+.jumbotron .lang-logo {
+  display: block;
+  background: #B01302;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  border: 2px solid white; 
+}
+.jumbotron .lang-logo img {
+  max-width: 100%; 
+}
+
+.logo {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.img-card-responsive{
+  height: 200px;
+  width: auto;
+  max-width: 100%;
+  object-fit: cover;
+  
+}
+
+.card-body{
+  overflow: hidden;
+}
+
+.card-text-responsive{
+  width: 100%;
+  max-height: 80px;
+  height: 80px;
+  padding-right: 17px;
+  overflow: auto;
+  box-sizing: content-box;
+}
+
+a.box-shadow,
+a.box-shadow:hover {
+  color:inherit;
+  text-decoration: none;
+}
+
+#price {
+  color: darkorange;
+}
+
+a.active {
+  font-weight: bolder;
+}
+
+.img-fluid {
+  height: 100%;
+  max-height: 72px;
+  width: 100%;
+  max-width: 100px;
+}
+
+#img-center {
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+
+.list-group-item {
+  display: flex;
+}
+
+.zoom-constraint img {
+  transition: transform .2s;
+  transition-delay: .25s;
+  transition-timing-function: ease-out;
+}
+
+.zoom-constraint img:hover {
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari 3-8 */
+  transform: scale(1.5);
+}
+
+.zoom-constraint {
+  overflow: hidden;
+}
+
+.borderless, 
+.borderless-title {
+  text-decoration: none;
+  border: none;
+  list-style-type: none;
+}
+
+.borderless-title {
+  color: darkorange;
+  font-weight: bold;
+  font-size: large;
+}
+
+
+
+.cartQuantityDisplay {
+  width: 2.5rem;
+  text-align: center;
+}
+
+.quantity-left-minus:hover{
+  background-color: #B01302;
+  color: white;
+}
+
+.quantity-right-plus:hover{
+  background-color: green;
+  color: white;
+}
+
+#create-order-btn {
+  margin: 1rem;
+}
+
+#continue {
+  text-align: center;
+}

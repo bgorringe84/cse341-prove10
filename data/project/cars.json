@@ -1,0 +1,68 @@
+
+[
+   {
+      "dates": [
+         "2020",
+         "Present"
+      ],
+      "name" : "2020 Koenigsegg Jesko",
+      "number" : "GHB39",
+      "price" : "1.00",
+      "description" : "The Koenigsegg Jesko (pronounced 'yes-ko') is a hypercar designed by Christian von Koenigsegg slated to be introduced in 2020. Designed as the successor to the Agera, the Jesko is designed to be a high-performance track car and is named after von Koenigsegg's father, Jesko von Koenigsegg. The car features a new 5.0L flat plane twin-turbocharged V8 mated to a 9-speed multi-clutch transmission; the car can produce between 1200 to 1600 horsepower depending on the fuel used.",
+      "imgUrl" : "https://i.ebayimg.com/images/g/ur8AAOSwTQFgX~Sx/s-l1600.jpg"
+   },
+   {
+      "dates": [
+         "2019",
+         "Present"
+      ],
+      "name" : "'16 Bugatti Chiron'",
+      "number" : "FYB49",
+      "price" : "10.00",
+      "description" : "The Bugatti Chiron mid-engine two-seater holds the potential to be the fastest, most powerful car in Bugatti's history. It is the successor to the Bugatti Veyron. It was named after car driver Louis Chiron. It has a 7,993 cc (8.0 L) quad-turbocharged W16 engine that develops 1,479 HP, with a 0-60 performance of 2.4 seconds.",
+      "imgUrl" : "https://i.ebayimg.com/images/g/V1IAAOSwc4BgfhaW/s-l1600.jpg"
+   },
+   {
+      "dates": [
+         "2018",
+         "Present"
+      ],
+      "name" : "Porsche 918 Spyder (2018)",
+      "number" : "FPT66",
+      "price" : "1.00",
+      "description" : "This version of the Porsche 918 Spyder is based on the 2014-2015 production version of the car, rather than the concept version like the one from 2013.",
+      "imgUrl" : "https://i.ebayimg.com/thumbs/images/g/gmkAAOSwQjlfS4oL/s-l225.webp"
+   },
+   {
+      "dates": [
+         "2019"
+      ],
+      "name" : "McLaren Senna",
+      "number" : "FYB46",
+      "price" : "4.00",
+      "description" : "The McLaren Senna is a Hot Wheels casting which was designed by Ryu Asada and Alvin Chan and debuted in the 2019 HW Exotics mainline segment. It is based on the real-life vehicle manufactured in 2018 and named after legendary Formula 1, McLaren driver, Ayrton Senna.",
+      "imgUrl" : "https://i.ebayimg.com/thumbs/images/g/bTkAAOSwsnVeOCHK/s-l225.webp"
+   },
+   {
+      "dates": [
+         "2014",
+         "Present"
+      ],
+      "name" : "Lamborghini Veneno",
+      "number" : "BDC79",
+      "price" : "2.00",
+      "description" : "The Lamborghini Veneno is a hypercar made by Italian manufacturer Lamborghini. The Veneno was introduced as a coupe at the 2013 Geneva Motor Show on March 5th. This Lamborghini celebrates the 50-years anniversary of Automobili Lamborghini.",
+      "imgUrl" : "https://i.ebayimg.com/thumbs/images/g/W8QAAOSw~kFfxun0/s-l225.webp"
+   },
+   {
+      "dates": [
+         "2010",
+         "2014"
+      ],
+      "name" : "Ferrari 458 Italia",
+      "number" : "R0954",
+      "price" : "12.00",
+      "description" : "The Ferrari 458 Italia is a supercar from famous Italian automaker Ferrari. With a powerful V-8 and sleek styling this car was the mainstream ferrari for more than 10 years.",
+      "imgUrl" : "https://i.ebayimg.com/thumbs/images/g/lKsAAOSw2R9gkT2h/s-l225.webp"
+   }
+]

@@ -1,0 +1,58 @@
+<%- include('../partials/header.ejs') %>
+<link rel="stylesheet" type="text/css" href="/stylesheets/forms.css" />
+</head>
+<body>
+   <%- include('../partials/nav.ejs') %>
+   <h1>Signup Page</h1>
+   <main>
+      <div class="main">
+         <div class="col-md-6 col-sm-12">
+            <form class="login-form" action="/signup" method="POST">
+                  <div class="form-group">
+                     <label for="name">Name</label>
+                     <input
+                        class="<%= validationErrors.find(e => e.param === 'name') ? 'form-control is-invalid' : 'form-control' %>"
+                        type="text" 
+                        name="name" 
+                        id="name" 
+                        value="<%= oldInput.name %>">
+                  </div>
+                  <div class="form-group">
+                     <label for="email">E-mail</label>
+                     <input
+                        class="<%= validationErrors.find(e => e.param === 'email') ? 'form-control is-invalid' : 'form-control' %>"
+                        type="text"
+                        name="email" 
+                        id="email" 
+                        value="<%= oldInput.email %>">
+                  </div>
+                  <div class="form-group">
+                     <label for="password">Password</label>
+                     <input
+                        class="<%= validationErrors.find(e => e.param === 'password') ? 'form-control is-invalid' : 'form-control' %>"
+                        type="password" 
+                        name="password" 
+                        id="password" 
+                        value="<%= oldInput.password %>">
+                  </div>
+                  <div class="form-group">
+                     <label for="confirmPassword">Confirm Password</label>
+                     <input
+                        class="<%= validationErrors.find(e => e.param === 'confirmPassword') ? 'form-control is-invalid' : 'form-control' %>"
+                        type="password" 
+                        name="confirmPassword" 
+                        id="confirmPassword" 
+                        value="<%= oldInput.confirmPassword %>">
+                  </div>
+                  <button type="submit" class="btn btn-sm btn-outline-secondary">Signup</button>
+                  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                  <% if (errorMessage) { %>
+                     <div class="alert alert-warning alert-dismissible fade show" role="alert"> 
+                        <strong>Holy guacamole!</strong> <p><span style="color: red;"><%= errorMessage %></span></p>
+                      </div>
+                 <% } %>
+            </form>
+         </div>
+      </div>
+   </main>
+    <%- include('../partials/footer.ejs') %>

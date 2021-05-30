@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../includes/header.ejs %>
+</head>
+
+<body>
+  <% include ../includes/nav.ejs %>
+<div class="jumbotron text-center">
+  <div class="container">
+    <h1><%= title %></h1>
+    <p>This is a sample Node application deployed to Heroku. It's a reasonably simple app - but a good foundation for understanding how to get the most out of the Heroku platform.</p>
+    <a type="button" class="btn btn-lg btn-light" href="https://devcenter.heroku.com/articles/getting-started-with-nodejs"><span class="glyphicon glyphicon-flash"></span> Getting Started on Heroku with Node.js</a>
+    <a type="button" class="btn btn-lg btn-primary" href="https://github.com/heroku/node-js-getting-started"><span class="glyphicon glyphicon-download"></span> Source on GitHub</a>
+  </div>
+</div>
+
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class = "row">
+      <div class = "col-md-4">
+        <a href= "/project" class="card mb-4 box-shadow" id="custom-card">
+          <img class="img-card-responsive" src="images/cars.png" alt="Project">
+          <div class="card-body">
+            <h5 class="card-title">E-Commerce Project</h5>
+            <p class="card-text">A showroom and E-commerce site for Hotwheels collector cars</p>
+            <p class="card-text"><small class="text-muted">Updated for Prove 06 --final--</small></p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>

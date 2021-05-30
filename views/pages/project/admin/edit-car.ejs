@@ -1,0 +1,58 @@
+<%- include('../partials/header.ejs') %>
+<link rel="stylesheet" type="text/css" href="/stylesheets/forms.css" />
+</head>
+<body>
+   <%- include('../partials/nav.ejs') %>
+   <main>
+      <h1>Edit car page</h1>
+      <form action="/edit-car" method="POST">
+         <div class="form-group row">
+            <label for="name" class="col-sm-1 col-form-label col-form-label-sm">Name: </label>
+            <div class="col-sm-10">
+               <input type="text" class="form-control form-control-sm" name="name" id="name" value="<%= car.name %>">
+            </div>
+         </div>
+         <div class="form-group row">
+            <label for="number" class="col-sm-1 col-form-label col-form-label-sm">Number: </label>
+            <div class="col-sm-10">
+               <input type="text" class="form-control form-control-sm" name="number" id="number" value="<%= car.number %>">
+            </div>
+         </div>
+         <div class="form-group row">
+            <label for="startDate" class="col-sm-1 col-form-label col-form-label-sm">Start Date: </label>
+            <div class="col-sm-10">
+               <input type="text" class="form-control form-control-sm" name="startDate" id="startDate" value="<%= car.dates[0] %>">
+            </div>
+         </div>
+         <div class="form-group row">
+            <label for="endDate" class="col-sm-1 col-form-label col-form-label-sm">End Date: </label>
+            <div class="col-sm-10">
+               <input type="text" class="form-control form-control-sm" name="endDate" id="endDate" value="<%= car.dates[1] %>">
+            </div>
+         </div>
+         <div class="form-group row">
+            <label for="price" class="col-sm-1 col-form-label col-form-label-sm">Price: </label>
+            <div class="col-sm-10">
+               <input type="text" class="form-control form-control-sm" name="price" id="price" value="<%= car.price %>">
+            </div>
+         </div>
+         <div class="form-group row">
+            <label for="imgUrl" class="col-sm-1 col-form-label col-form-label-sm">Image Address: </label>
+            <div class="col-sm-10">
+               <input type="text" class="form-control form-control-sm" name="imgUrl" id="imgUrl" value="<%= car.imgUrl %>">
+            </div>
+         </div>
+         <div class="form-group row">
+            <label for="description">Description: </label>
+            <textarea name="description" rows="5" name="description" class="form-control" id="description" ><%= car.description %></textarea>
+         </div>
+         <div class="btn-group">
+            <button type="submit" class="btn btn-sm btn-outline-secondary">Update</button>
+            <button type="reset" class="btn btn-sm btn-outline-secondary">Reset</button>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <input type="hidden" value="<%= car._id %>" name="carId">
+         </div>
+      </form>
+
+   </main>
+   <%- include('../partials/footer.ejs') %>

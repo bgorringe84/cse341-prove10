@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/project">E-Commerce Project</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="<%= path === '/project' ? 'nav-link active' : 'nav-link' %>" href="/project">Home</span></a>
+      </li>
+      <% if(isAuthenticated) { %>
+        <li class="nav-item">
+        <a class="<%= path === '/orders' ? 'nav-link active' : 'nav-link' %>" href="/orders">Orders</a>
+        </li>
+      <li class="nav-item">
+        <a class="<%= path === '/cart' ? 'nav-link active' : 'nav-link' %>" href="/cart">Cart</a>
+      </li>
+      <% } %>
+    </ul>
+  </div>
+  <div class="mx-auto order-0">
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+     <ul class="navbar-nav mr-auto">
+      <% if(isAuthenticated) { %>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Admin
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li class="<%= path === '/add-car' ? 'active' : ''%>"><a class="dropdown-item" href="/add-car">Add Car</a></li>
+          <li class="<%= path === '/edit-car' ? 'active' : ''%>"><a class="dropdown-item" href="/edit-car">Edit Car</a></li> 
+        </ul>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Login
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li class="<%= path === '/login' ? 'active' : ''%>"><a class="dropdown-item" href="/login">Change User</a></li>
+          <li class="<%= path === '/logout' ? 'active' : ''%>">
+            <form action="/logout" method="POST">
+              <button class="dropdown-item" type="submit">Logout</button>
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            </form>
+          </li> 
+        </ul>
+      </li>
+      <% } else { %>
+       <li class="nav-item">
+         <a class="<%= path === '/login' ? 'nav-link active' : 'nav-link' %>" href="/login">Login</a>
+       </li>
+       <li class="nav-item">
+        <a class="<%= path === '/signup' ? 'nav-link active' : 'nav-link' %>" href="/signup">Signup</a>
+       </li>
+       <% } %>
+     </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,44 @@
+<%- include('../partials/header.ejs') %>
+<link rel="stylesheet" type="text/css" href="/stylesheets/forms.css" />
+</head>
+<body>
+   <%- include('../partials/nav.ejs') %>
+   <main>
+      <table class="table table-hover">
+         <thead>
+            <tr>
+
+            </tr>
+         </thead>
+         <% cars.forEach(car=> { %>
+         <tr>
+            <th class= edit-car-img>
+               <img src="<%= car.imgUrl %>" class="img-card-responsive" alt="<%= car.name %>">
+            </th>
+            <td>
+               <ul class="borderless">
+                  <li><span style="font-weight: bold;">name :</span> <span style="color: blue;">"<%= car.name %>"</span></li>
+                  <li><span style="font-weight: bold;">number :</span> <span style="color: blue;">"<%= car.number %>"</span></li>
+                  <li><span style="font-weight: bold;">dates :</span> <span style="color: blue;">"<%= car.dates[0] %>
+                     <% if (car.dates[1]) { %>- <%= car.dates[1] %> <% } %>"</span></li>
+                  <li><span style="font-weight: bold;">price :</span> <span style="color: blue;">"<%= car.price.toFixed(2) %>"</span></li>
+                  <li><span style="font-weight: bold;">description :</span>
+                     <span style="color: blue;">"<%= car.description.substring(0, 90) %> . . ."</span></li>
+                  <li><br></li>
+                  <li>
+                     <div class="btn-group">
+                        <a href="/edit-car/<%= car._id %>" class="btn btn-sm btn-outline-secondary">Edit</a>
+                        <form action="/edit-delete-car" method = "POST">
+                           <button class= "btn btn-sm btn-outline-danger" type="submit">Delete</button>
+                           <input type="hidden" value="<%= car._id %>" name="carId">
+                           <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        </form>  
+                     </div>
+                  </li>
+               </ul>
+            </td>
+         </tr>
+         <% }) %>
+      </table>
+   </main>
+   <%- include('../partials/footer.ejs') %>

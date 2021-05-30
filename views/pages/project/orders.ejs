@@ -1,0 +1,39 @@
+<%- include('partials/header.ejs') %>
+</head>
+<body>
+   <%- include('partials/nav.ejs') %>
+   <main>
+      <h1>Orders Page</h1>
+
+
+         <main>
+            <div class="container">
+               <% if (orders.length > 0) { %>
+                  <ul class = "list-group">
+                     <% orders.forEach(order => { %>
+                        <ul class="list-group-item">
+                              <li class = "borderless-title">
+                                 Order - # <%= order._id %>
+                              </li>
+                              <ul class = "borderless">
+                                 <% order.cars.forEach(c => { %>
+                                    <li>
+                                       <%= c.car.name %> (<%= c.quantity %>)
+                                    </li>
+                                 <% }) %>
+                              </ul>
+                        </ul>
+                        
+                     <% }) %>
+                  </ul>
+            </div>
+                  
+               <% } else { %>
+                  <h1>No Orders!</h1>
+               <% } %>
+
+
+            </div>
+         </main>
+
+   <%- include('partials/footer.ejs') %>

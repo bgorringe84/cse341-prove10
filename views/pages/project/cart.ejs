@@ -1,0 +1,72 @@
+<%- include('partials/header.ejs') %>
+</head>
+<body>
+   <%- include('partials/nav.ejs') %>
+   <main>
+      <h1>Cart Page</h1>
+
+         <main>
+            <div class="container">
+               <% if (cars.length > 0) { %>
+                  <ul class = "list-group">
+                     <% cars.forEach(c => { %>
+                        <li class="list-group-item" id="img-center">
+                           <img src="<%= c.carId.imgUrl %>" class="img-fluid" alt="<%= c.carId.name %>">
+                           <div class = "container">
+                              <ul class = "borderless">
+                                 <li>
+                                    <%= c.carId.name %>
+                                 </li>
+                                 <li>
+                                    Price: $<%= c.carId.price %>
+                                 </li>
+                                 <li>
+                                    <span style="color:darkorange;">Quantity: </span>
+                                    <div class="input-group">
+                                       <form action="/decrement-quantity" method = "POST" class="input-group-btn">
+                                          <button type="submit" class="quantity-left-minus btn btn-default btn-number"  data-type="minus" data-field="">
+                                             <span style="font-weight: bolder;">-</span>
+                                          </button>
+                                          <input type="hidden" value="<%= c.carId._id %>" name="carId">
+                                          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                       </form>
+                                       <input type="text" class="cartQuantityDisplay" id="carQuantity" name="carQuantity" readonly="readonly" value="<%= c.quantity %>" min="1" max="99">
+                                       <form action="/increment-quantity" method = "POST" class="input-group-btn">
+                                          <button type="submit" class="quantity-right-plus btn btn-default btn-number" data-type="plus" data-field="">
+                                             <span style="font-weight: bolder;">+</span>
+                                       </button>
+                                       <input type="hidden" value="<%= c.carId._id %>" name="carId">
+                                       <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                       </form>
+                                    </div>
+                                 </li>
+                                    <li>
+                                       Total: $<%= (c.carId.price * c.quantity).toFixed(2) %>
+                                    </li>
+                              </ul>
+                           </div>
+                           <form action="/cart-remove-car" method = "POST">
+                              <button class= "btn btn-sm btn-outline-secondary" type="submit">Remove</button>
+                              <input type="hidden" value="<%= c.carId._id %>" name="carId">
+                              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                           </form>  
+                           </li>
+                     <% }) %>
+                  </ul>
+                  <div class= "container" id="continue">
+                     <a href="/project">Continue Shopping</a>
+                     <form action="/create-order" method = "POST">
+                        <button class= "btn btn-sm btn-outline-secondary" id="create-order-btn" type="submit">Create Order</button>
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                     </form>  
+                  </div>
+               <% } else { %>
+                  <h1>No Products in Cart!</h1>
+               <% } %>
+
+
+            </div>
+         </main>
+
+   </main>
+   <%- include('partials/footer.ejs') %>
