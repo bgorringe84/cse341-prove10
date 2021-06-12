@@ -6,6 +6,8 @@ const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
 const csrf = require('csurf');
 const flash = require('connect-flash');
+const multer = require('multer');
+
 const PORT = process.env.PORT || 5000 // So we can run on heroku || (OR) localhost:5000
 const User = require('./models/project/user');
 const MONGODB_URI = 'mongodb+srv://brandon:L6qFXcP6dyQMRf2H@cluster0.waj0f.mongodb.net/myFirstDatabase';
@@ -19,6 +21,27 @@ const store = new MongoDBStore({
 
 const csrfProtection = csrf();
 
+const fileStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'images');
+  },
+  filename: (req, file, cb) => {
+    cb(null, '/' + file.originalname);
+  }
+});
+
+const fileFilter = (req, file, cb) => {
+  if (
+    file.mimetype === 'image/png' ||
+    file.mimetype === 'image/jpg' ||
+    file.mimetype === 'image/jpeg'
+  ) {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
+
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
@@ -26,13 +49,16 @@ app.set('view engine', 'ejs')
 const ta01Routes = require('./routes/ta01');
 const ta02Routes = require('./routes/ta02');
 const ta03Routes = require('./routes/ta03'); 
-const ta04Routes = require('./routes/ta04'); 
+const ta04Routes = require('./routes/ta04');
+const prove08Routes = require('./routes/prove08'); 
 const projectRoutes = require('./routes/project/showRoom');
 const authRoutes = require('./routes/project/auth');
 const adminRoutes = require('./routes/project/admin');
 
 app.use(express.urlencoded({extended: false})) // For parsing the body of a POST
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(multer({ storage: fileStorage, fileFilter: fileFilter }).single('image'));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.use(session({ secret: 'my secret', resave: false, saveUninitialized: false, store: store}));
 
@@ -64,6 +90,7 @@ app.use('/ta01', ta01Routes)
    .use('/ta02', ta02Routes) 
    .use('/ta03', ta03Routes) 
    .use('/ta04', ta04Routes)
+   .use('/prove08', prove08Routes)
    .use(projectRoutes)
    .use(authRoutes)
    .use(adminRoutes)

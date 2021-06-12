@@ -5,7 +5,7 @@
    <%- include('../partials/nav.ejs') %>
 
    <h1>Add Car Page</h1>
-   <form action="/add-car" method="POST">
+   <form action="/add-car" method="POST" enctype="multipart/form-data">
       <div class="form row">
          <div class="col-md-3 mb-2">
             <label for="name">Car Name</label>
@@ -61,7 +61,7 @@
          </div>
       </div>
       <div class="form row">
-         <div class="col-md-6 mb-7">
+         <!-- <div class="col-md-6 mb-7">
             <label for="imgUrl">Image URL</label>
             <input
                class="<%= validationErrors.find(e => e.param === 'imgUrl') ? 'form-control is-invalid' : 'form-control' %>"
@@ -70,6 +70,13 @@
                id="imgUrl"
                value="<%= oldInput.imgUrl %>"
                required>
+         </div> -->
+         <div class="col-md-6 mb-7">
+            <label for="image">Image</label>
+            <input
+               type="file"
+               name="image"
+               id="image">
          </div>
       </div>
       <div class="form row">

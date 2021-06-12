@@ -13,7 +13,10 @@
                      <% orders.forEach(order => { %>
                         <ul class="list-group-item">
                               <li class = "borderless-title">
-                                 Order - # <%= order._id %>
+                                 Order - # <%= order._id %> -
+                              </li>
+                              <li class = "borderless-title">
+                                 <a href="/orders/<%= order._id %>">Invoice</a>
                               </li>
                               <ul class = "borderless">
                                  <% order.cars.forEach(c => { %>

@@ -44,8 +44,8 @@ router.post('/add-car',
       body('price', 'Price must be in $$.¢¢ format')
          .isFloat(),
 
-      body('imgUrl', 'Must be a valid URL')
-         .isURL(),
+      // body('imgUrl', 'Must be a valid URL')
+      //    .isURL(),
 
       body('description', 'description is required')
          .trim()
@@ -76,8 +76,8 @@ router.get('/edit-car/:carId',
       body('newPrice', 'Price must be in $$.¢¢ format')
          .isFloat(),
 
-      body('newImgUrl', 'Must be a valid URL')
-         .isURL(),
+      // body('newImgUrl', 'Must be a valid URL')
+      //    .isURL(),
 
       body('newDescription', 'description is required')
          .trim()
@@ -120,8 +120,8 @@ router.post('/edit-car',
       body('price')
          .isFloat(),
 
-      body('imgUrl')
-         .isURL(),
+      // body('imgUrl')
+      //    .isURL(),
 
       body('description')
          .trim()

@@ -2,6 +2,8 @@ const Car = require('../../models/project/car');
 const User = require('../../models/project/user');
 const { validationResult } = require('express-validator');
 
+const fileHelper = require('../../util/project/file');
+
 exports.getAddCar = (req, res, next) => {
    let message = req.flash('error');
    if (message.length > 0) {
@@ -32,26 +34,44 @@ exports.postAddCar = (req, res, next) => {
    const endDate = req.body.endDate;
    const number = req.body.number;
    const price = req.body.price;
-   const imgUrl = req.body.imgUrl;
+   const image = req.file;
    const description = req.body.description;
-   const errors = validationResult(req);
-   if (!errors.isEmpty()) {
+   console.log(image);
+   if (!image){
       return res.status(422).render('pages/project/admin/add-car', {
          path: '/add-car',
          pageTitle: 'Add Car',
-         errorMessage: errors.array()[0].msg,
          oldInput: {
             name: name,
             startDate: startDate,
             endDate: endDate,
             number: number,
             price: price,
-            imgUrl: imgUrl,
             description: description
          },
+         errorMessage: 'Attached file is not an image',
+         validationErrors: []
+      });
+   }
+   const errors = validationResult(req);
+   if (!errors.isEmpty()) {
+      return res.status(422).render('pages/project/admin/add-car', {
+         path: '/add-car',
+         pageTitle: 'Add Car',
+         oldInput: {
+            name: name,
+            startDate: startDate,
+            endDate: endDate,
+            number: number,
+            price: price,
+            description: description
+         },
+         errorMessage: errors.array()[0].msg,
          validationErrors: errors.array()
       });
    }
+
+   const imgUrl = image.path;
    const car = new Car ({
       dates: [startDate, endDate],
       name: name,
@@ -131,7 +151,7 @@ exports.postEditCar = (req, res, next) => {
    const newStartDate = req.body.startDate;
    const newEndDate = req.body.endDate;
    const newPrice = req.body.price;
-   const newImgUrl = req.body.imgUrl;
+   const newImage = req.file;
    const newDescription = req.body.description;
   
 
@@ -145,7 +165,10 @@ exports.postEditCar = (req, res, next) => {
       car.dates[0] = newStartDate;
       car.dates[1] = newEndDate;
       car.price = newPrice;
-      car.imgUrl = newImgUrl;
+      if (newImage) {
+         // fileHelper.deleteFile(car.imgUrl);
+         car.imgUrl = newImage.path;
+      }
       car.description = newDescription;
       
       return car
@@ -159,9 +182,22 @@ exports.postEditCar = (req, res, next) => {
 
 exports.postDeleteCar = (req, res, next) => {
    const carId = req.body.carId;
-   Car.deleteOne({ _id: carId, userId: req.user._id })
+   Car.findById(carId)
+   .then(car => {
+      if (!car) {
+         return next(new Error('Car not found.'));
+      }
+      // fileHelper.deleteFile(car.imgUrl);
+      return Car.deleteOne({ _id: carId, userId: req.user._id })
+   })
    .then(() => {
+      console.log('DESTROYED PRODUCT');
       res.redirect('/edit-car');
    })
-   .catch(err => console.log(err));
-}
+   .catch(err => {
+      const error = new Error(err);
+      error.httpStatusCode = 500;
+      return next(error);
+    });
+};
+
