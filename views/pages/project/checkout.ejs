@@ -1,0 +1,45 @@
+<%- include('partials/header.ejs') %>
+</head>
+<body>
+   <%- include('partials/nav.ejs') %>
+   <main>
+      <h1>Checkout Page</h1>
+
+         <main>
+            <ul class = "list-group">
+               <% cars.forEach(c => { %>
+                  <li class="list-group-item" id="img-center">
+                     <img src="<%= c.carId.imgUrl %>" class="img-fluid" alt="<%= c.carId.name %>">
+                     <div class = "container">
+                        <ul class = "borderless">
+                           <li>
+                              <%= c.carId.name %>
+                           </li>
+                           <li>
+                              Price: $<%= c.carId.price.toFixed(2) %>
+                           </li>
+                           <li>
+                              <span style="color:darkorange;">Quantity: </span>
+                              <div class="input-group">
+                                 <input type="text" class="cartQuantityDisplay" id="carQuantity" name="carQuantity" readonly="readonly" value="<%= c.quantity %>" min="1" max="99">
+                              </div>
+                           </li>
+                              <li>
+                                 <span style="font-weight: bolder;">Total: $<%= (c.carId.price * c.quantity).toFixed(2) %></span>
+                              </li>
+                        </ul>
+                     </div>
+                     </li>
+               <% }) %>
+            </ul>
+            <div>
+               <h1><span style="color: darkorange;">Total: $<%= totalSum.toFixed(2) %></span></h1>
+            </div>
+            <div>
+               <button id="order-btn" class="btn btn-sm btn-outline-secondary">ORDER</button>
+               <script src="https://js.stripe.com/v3/"></script>
+            </div>
+         </main>
+
+   </main>
+   <%- include('partials/footer.ejs') %>

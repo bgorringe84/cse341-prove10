@@ -180,8 +180,8 @@ exports.postEditCar = (req, res, next) => {
       .catch(err => console.log(err));
 };
 
-exports.postDeleteCar = (req, res, next) => {
-   const carId = req.body.carId;
+exports.deleteCar = (req, res, next) => {
+   const carId = req.params.carId;
    Car.findById(carId)
    .then(car => {
       if (!car) {
@@ -192,12 +192,10 @@ exports.postDeleteCar = (req, res, next) => {
    })
    .then(() => {
       console.log('DESTROYED PRODUCT');
-      res.redirect('/edit-car');
+      res.status(200).json({ message: 'Success!' });
    })
    .catch(err => {
-      const error = new Error(err);
-      error.httpStatusCode = 500;
-      return next(error);
+      res.status(500).json({ message: 'Delete Failed!' });
     });
 };
 

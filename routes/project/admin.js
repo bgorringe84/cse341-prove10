@@ -128,7 +128,7 @@ router.post('/edit-car',
 ] 
 , isAuth, adminController.postEditCar);
 
-router.post('/edit-delete-car', isAuth, adminController.postDeleteCar);
+router.delete('/car/:carId', isAuth, adminController.deleteCar);
 
 
 

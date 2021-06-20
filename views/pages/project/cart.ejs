@@ -55,10 +55,12 @@
                   </ul>
                   <div class= "container" id="continue">
                      <a href="/project">Continue Shopping</a>
-                     <form action="/create-order" method = "POST">
+                     <h1><span style="color: darkorange;">$<%= totalPrice.toFixed(2) %></span></h1>
+                     <!-- <form action="/create-order" method = "POST">
                         <button class= "btn btn-sm btn-outline-secondary" id="create-order-btn" type="submit">Create Order</button>
                         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-                     </form>  
+                     </form>   -->
+                     <a href="/checkout" class="btn btn-sm btn-outline-secondary">Order Now</a>
                   </div>
                <% } else { %>
                   <h1>No Products in Cart!</h1>

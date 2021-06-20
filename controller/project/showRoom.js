@@ -41,11 +41,16 @@ exports.getDetail = (req, res, next) => {
         .execPopulate()
         .then(user => {
           const cars = user.cart.items;
+          let total = 0;
+          cars.forEach(c => {
+            total += c.quantity * c.carId.price;
+          })
           res.render('pages/project/cart', {
             path: '/cart',
             pageTitle: 'Your Cart',
             cars: cars,
-            isAuthenticated: req.session.isLoggedIn
+            isAuthenticated: req.session.isLoggedIn,
+            totalPrice : total
           });
         })
         .catch(err => console.log(err));
@@ -85,6 +90,27 @@ exports.postDecrementQuantity = (req, res, next) => {
     res.redirect('/cart');
   });
 };
+
+exports.getCheckout = (req, res, next) => {
+  req.user
+        .populate('cart.items.carId')
+        .execPopulate()
+        .then(user => {
+          const cars = user.cart.items;
+          let total = 0;
+          cars.forEach(c => {
+            total += c.quantity * c.carId.price;
+          })
+          res.render('pages/project/checkout', {
+            path: '/checkout',
+            pageTitle: 'Checkout Page',
+            cars: cars,
+            isAuthenticated: req.session.isLoggedIn,
+            totalSum: total
+          });
+        })
+        .catch(err => console.log(err));
+    };
 
 exports.postOrder = (req, res, next) => {
    req.user

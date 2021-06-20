@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <% include ../includes/header.ejs %>
+</head>
+
+<body>
+  <% include ../includes/nav.ejs %>
+    <div class="jumbotron text-center">
+      <div class="container">
+        <h1>
+          <%= title %>
+        </h1>
+        <p>Prove 09</p>
+      </div>
+    </div>
+    <div>
+      <% data.forEach(dataItem=> { %>
+         <div class="text-center" >
+            <%= dataItem.name %>
+         </div>
+      <% }) %>
+    </div>
+    
+    <nav>
+      <ul class="pagination justify-content-center">
+         <li class="page-item"><a class="page-link" href="/prove09">First</a></li>
+         <% if(page >= 1) { %>
+        <li class="page-item"><a class="page-link" href="/prove09?page=<%= (page - 1)  %>">Previous</a></li>
+        <% } %>
+        <li class="page-item"><a class="page-link" href="#"><%= page + 1 %></a></li>
+        <% if(page != 111) { %>
+        <li class="page-item"><a class="page-link" href="/prove09?page=<%= (page + 1)  %>">Next</a></li>
+        <% } %>   
+        <li class="page-item"><a class="page-link" href="/prove09?page=111">Last</a></li>
+      </ul>
+    </nav>
+
+
+</body>
+
+</html>

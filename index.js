@@ -50,7 +50,8 @@ const ta01Routes = require('./routes/ta01');
 const ta02Routes = require('./routes/ta02');
 const ta03Routes = require('./routes/ta03'); 
 const ta04Routes = require('./routes/ta04');
-const prove08Routes = require('./routes/prove08'); 
+const prove08Routes = require('./routes/prove08');
+const prove09Routes = require('./routes/prove09'); 
 const projectRoutes = require('./routes/project/showRoom');
 const authRoutes = require('./routes/project/auth');
 const adminRoutes = require('./routes/project/admin');
@@ -91,6 +92,7 @@ app.use('/ta01', ta01Routes)
    .use('/ta03', ta03Routes) 
    .use('/ta04', ta04Routes)
    .use('/prove08', prove08Routes)
+   .use('/prove09', prove09Routes)
    .use(projectRoutes)
    .use(authRoutes)
    .use(adminRoutes)

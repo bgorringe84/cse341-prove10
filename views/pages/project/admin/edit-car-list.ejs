@@ -28,11 +28,11 @@
                   <li>
                      <div class="btn-group">
                         <a href="/edit-car/<%= car._id %>" class="btn btn-sm btn-outline-secondary">Edit</a>
-                        <form action="/edit-delete-car" method = "POST">
-                           <button class= "btn btn-sm btn-outline-danger" type="submit">Delete</button>
+                        <!-- <form action="/edit-delete-car" method = "POST"> -->
+                           <button class= "btn btn-sm btn-outline-danger" type="button" onclick="deleteCar(this)">Delete</button>
                            <input type="hidden" value="<%= car._id %>" name="carId">
                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-                        </form>  
+                        <!-- </form>   -->
                      </div>
                   </li>
                </ul>
@@ -42,3 +42,4 @@
       </table>
    </main>
    <%- include('../partials/footer.ejs') %>
+   <script src="/scripts/adminFunctions.js"></script>

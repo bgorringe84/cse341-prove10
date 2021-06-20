@@ -12,6 +12,7 @@ router.post('/cart', isAuth, showRoomController.postCart);
 router.post('/cart-remove-car', isAuth, showRoomController.postCartRemoveCar);
 router.post('/increment-quantity', isAuth, showRoomController.postCart);
 router.post('/decrement-quantity', showRoomController.postDecrementQuantity);
+router.get('/checkout', isAuth, showRoomController.getCheckout);
 router.post('/create-order', isAuth, showRoomController.postOrder);
 router.get('/orders', isAuth, showRoomController.getOrders);
 router.get('/orders/:orderId', isAuth, showRoomController.getInvoice);
