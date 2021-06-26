@@ -19,6 +19,10 @@ const store = new MongoDBStore({
   collection: 'sessions'
 });
 
+// mount the prove10 before csrf checks
+const prove10Routes = require('./routes/prove10');
+app.use('/prove10', prove10Routes) 
+
 const csrfProtection = csrf();
 
 const fileStorage = multer.diskStorage({
@@ -51,7 +55,8 @@ const ta02Routes = require('./routes/ta02');
 const ta03Routes = require('./routes/ta03'); 
 const ta04Routes = require('./routes/ta04');
 const prove08Routes = require('./routes/prove08');
-const prove09Routes = require('./routes/prove09'); 
+const prove09Routes = require('./routes/prove09');
+
 const projectRoutes = require('./routes/project/showRoom');
 const authRoutes = require('./routes/project/auth');
 const adminRoutes = require('./routes/project/admin');
